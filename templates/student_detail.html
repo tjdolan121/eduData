@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Student Detail{% endblock %}
+
+{% block content %}
+    <h1>View Record</h1>
+    <ul>
+        <li>Student ID: {{ student.id }}</li>
+        <li>Student First Name: {{ student.fname }}</li>
+        <li>Student Last Name: {{ student.lname }}</li>
+        <li>Student Enrolled Since: {{ student.enrolled_since }}</li>
+    </ul>
+    {% for grade in student.grades.all %}
+        {{ grade.letter_grade }}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Grade Detail{% endblock %}
+
+{% block content %}
+    <h1>View Record</h1>
+    <ul>
+        <li>Record ID: {{ grade.id }}</li>
+        <li>Student ID: {{ grade.sid.id }}</li>
+        <li>Course ID: {{ grade.course.id }}</li>
+        <li>Letter Grade: {{ grade.letter_grade }}</li>
+    </ul>
+{% endblock %}

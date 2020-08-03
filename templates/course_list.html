@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Courses{% endblock %}
+
+{% block content %}
+
+    <h1>Courses</h1>
+    <table style="width:100%">
+        <tr>
+            <th>Course ID</th>
+            <th>Department</th>
+            <th>Number</th>
+            <th>Name</th>
+            <th>Credits</th>
+            <th>View Record</th>
+            <th>Update Record</th>
+            <th>Delete Record</th>
+        </tr>
+        {% for course in object_list %}
+            <tr>
+                <td>{{ course.id }}</td>
+                <td>{{ course.dept }}</td>
+                <td>{{ course.num }}</td>
+                <td>{{ course.name }}</td>
+                <td>{{ course.credits }}</td>
+                <td><a href="{% url 'course_detail' pk=course.pk %}">View</a></td>
+                <td><a href="{% url 'course_edit' pk=course.pk %}">Edit</a></td>
+                <td><a href="{% url 'course_delete' pk=course.pk %}">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{% url 'course_create' %}">+ Add Record</a>
+
+{% endblock %}

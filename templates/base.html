@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+<div style="text-align: center">
+<h1>Data Browser</h1>
+<h4>Browse By Table:</h4>
+<a href="{% url 'student_list' %}">|  Student Table  |</a>
+<a href="{% url 'course_list' %}">Course Table  |</a>
+<a href="{% url 'grade_list' %}">Grade Table  |</a>
+</div>
+{% block content %}
+
+{% endblock %}
+
+</body>
+</html>

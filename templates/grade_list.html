@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Grades{% endblock %}
+
+{% block content %}
+
+    <h1>Grades</h1>
+    <table style="width:100%">
+        <tr>
+            <th>Record ID</th>
+            <th>Student ID</th>
+            <th>Course ID</th>
+            <th>Letter Grade</th>
+            <th>View Record</th>
+            <th>Update Record</th>
+            <th>Delete Record</th>
+        </tr>
+
+        {% for grade in object_list %}
+            <tr>
+                <td>{{ grade.id }}</td>
+                <td>{{ grade.sid.id }}</td>
+                <td>{{ grade.course }}</td>
+                <td>{{ grade.letter_grade }}</td>
+                <td><a href="{% url 'grade_detail' pk=grade.pk %}">View</a></td>
+                <td><a href="{% url 'grade_edit' pk=grade.pk %}">Edit</a></td>
+                <td><a href="{% url 'grade_delete' pk=grade.pk %}">Delete</a></td>
+            </tr>
+
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{% url 'grade_create' %}">+ Add Record</a>
+
+{% endblock %}
