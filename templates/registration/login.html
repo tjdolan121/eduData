@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Log In{% endblock %}
+
+{% block content %}
+    <div style="text-align: center">
+        <h2>You must log in to use this system</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Log In</button>
+        </form>
+    </div>
+{% endblock %}
