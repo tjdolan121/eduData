@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}Home{% endblock %}
-
+{% block title %}API{% endblock %}
 {% block content %}
     <div style="text-align: center">
         <h1>The Gradebook API</h1>
@@ -10,10 +10,8 @@
         <a href="{% url 'api_students' %}">Student Data</a>
         <a href="{% url 'api_courses' %}">Course Data</a>
         <a href="{% url 'api_grades' %}">Grades Data</a>
+        <hr>
         <h2>CLI Interface</h2>
         <h5>...Or you can use your terminal</h5>
-        <div style="width:50%;text-align: center">
-            <script src="https://gist.github.com/tjdolan121/1accae24af2d9dd5453a55a56629f8b5.js"></script>
-        </div>
     </div>
 {% endblock %}

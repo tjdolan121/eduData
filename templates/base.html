@@ -8,19 +8,22 @@
 </head>
 <body>
 <div style="text-align: center">
-    <h1>Data Browser</h1>
+    <h1>The Gradebook Data Browser</h1>
     {% if user.is_authenticated %}
         <h4>Browse By Table:</h4>
         <a href="{% url 'student_list' %}">| Student Table |</a>
         <a href="{% url 'course_list' %}">Course Table |</a>
         <a href="{% url 'grade_list' %}">Grade Table |</a><br><br>
-        <a href="{% url 'logout' %}">Log Out</a><hr>
     {% else %}
     {% endif %}
 </div>
 {% block content %}
 
 {% endblock %}
-
+<hr>
+<div style="text-align: center">
+    <a href="{% url 'home' %}">Home</a><br><br>
+    <a href="{% url 'logout' %}">Log Out</a>
+</div>
 </body>
 </html>
