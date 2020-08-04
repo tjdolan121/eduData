@@ -36,6 +36,18 @@ class StudentDetailView(LoginRequiredMixin, DetailView):
     model = Student
     template_name = 'student_detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        ttl = 0
+        gpa_pts = 0
+        for grade in self.object.grades.all():
+            ttl += grade.course.credits
+            gpa_pts += grade.gpa
+        context['ttl_credits'] = ttl
+        context['gpa_points'] = gpa_pts
+        context['cum_gpa'] = round(gpa_pts / ttl, 3)
+        return context
+
 
 class CourseDetailView(LoginRequiredMixin, DetailView):
     model = Course

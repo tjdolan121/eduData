@@ -3,14 +3,19 @@
 {% block title %}Student Detail{% endblock %}
 
 {% block content %}
-    <h1>View Record</h1>
+    <h1>Unofficial Transcript</h1>
+    <p>Name: {{ student.lname }}, {{ student.fname }}</p>
+    <p>Student ID: {{ student.id }}</p>
+    <p>Enrolled Since: {{ student.enrolled_since }}</p>
+    <hr>
+    <p>Begin Record</p>
     <ul>
-        <li>Student ID: {{ student.id }}</li>
-        <li>Student First Name: {{ student.fname }}</li>
-        <li>Student Last Name: {{ student.lname }}</li>
-        <li>Student Enrolled Since: {{ student.enrolled_since }}</li>
-    </ul>
     {% for grade in student.grades.all %}
-        {{ grade.letter_grade }}
+        <li>{{ grade.course.dept }}{{ grade.course.num }} {{ grade.course.name }} | {{ grade.letter_grade }} | Credits: {{ grade.course.credits }} | GPA Points: {{ grade.gpa }}</li>
     {% endfor %}
+    </ul>
+    <p>End Record</p>
+    <hr>
+    Total Credits: {{ ttl_credits }}
+    <strong>GPA: {{ cum_gpa }}</strong>
 {% endblock %}

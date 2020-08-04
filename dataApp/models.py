@@ -24,6 +24,7 @@ class Student(models.Model):
         return reverse('student_detail', args=[str(self.id)])
 
 
+
 class Course(models.Model):
     dept = models.CharField(max_length=4)
     num = models.CharField(max_length=4)
@@ -41,3 +42,12 @@ class Grade(models.Model):
     sid = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='grades')
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='grades')
     letter_grade = models.CharField(max_length=5, choices=GRADES)
+
+    @property
+    def gpa(self):
+        conv = {"A+": 4, "A": 4, "A-": 3.7,
+                "B+": 3.3, "B": 3, "B-": 2.7,
+                "C+": 2.3, "C": 2, "C-": 1.7,
+                "D+": 1.3, "D": 1, "D-": 0.7,
+                "F": 0}
+        return conv[self.letter_grade] * self.course.credits
