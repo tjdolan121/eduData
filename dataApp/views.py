@@ -65,12 +65,14 @@ class StudentCreateView(LoginRequiredMixin, CreateView):
     model = Student
     template_name = 'student_create.html'
     fields = ('fname', 'lname', 'enrolled_since')
+    success_url = reverse_lazy('student_list')
 
 
 class CourseCreateView(LoginRequiredMixin, CreateView):
     model = Course
     template_name = 'course_create.html'
     fields = ('dept', 'num', 'name', 'credits')
+    success_url = reverse_lazy('course_list')
 
 
 class GradeCreateView(LoginRequiredMixin, CreateView):
